@@ -1,25 +1,150 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <script
+            src="https://kit.fontawesome.com/bcc5636d69.js"
+            crossorigin="anonymous"
+        ></script>
         <style>
-            table,
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                border: 3px solid;
+                font-family: sans-serif;
+            }
+            th:nth-child(1),
+            td:nth-child(1) {
+                width: 40%;
+                background-color: #ff00001a;
+            }
             th,
             td {
                 border: 1px solid;
-                padding: 2%;
+                padding: 10px;
+            }
+            img {
+                border-radius: 50%;
+            }
+            .white {
+                color: white;
+            }
+            #circle {
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                background: rgba(0, 0, 0, 0.072);
+            }
+            .center {
+                position: relative;
+                top: 50%;
+                transform: translateY(-50%);
             }
         </style>
     </head>
     <body>
         <table>
             <tr>
-                <th>Header 1</th>
-                <th>Header 2</th>
-                <th>Header 3</th>
+                <!--Avatar Image-->
+                <th>
+                    <center>
+                        <div id="circle">
+                            <img
+                                class="center"
+                                src="https://i.kym-cdn.com/photos/images/newsfeed/001/193/375/5f7.jpeg"
+                                alt="Avatar"
+                                style="height: 150px; width: 150px"
+                            />
+                        </div>
+                    </center>
+                </th>
+                <!--2nd Column-->
+                <th></th>
+                <!--Name-->
+                <th>
+                    <h1 style="font-size: 300%; text-align: left">
+                        Zazheska D. Lorenzo
+                    </h1>
+                    <p style="text-align: left; font-size: 120%">
+                        Web Developer
+                    </p>
+                </th>
             </tr>
+
             <tr>
-                <td>Data 1</td>
-                <td>Data 2</td>
+                <th style="background-color: #ff000093">
+                    <h2 class="white">CONTACT ME</h2>
+                </th>
+                <!--2nd Column-->
+                <th></th>
+                <th style="background-color: #ff000093">
+                    <h2
+                        class="white"
+                        style="text-align: left; padding-left: 20px"
+                    >
+                        WORK EXPERIENCE
+                    </h2>
+                </th>
+            </tr>
+
+            <tr>
+                <td>
+                    <ul>
+                        <li>
+                            Phase 1 Block 33 Lot 22 Elenita Heights Subdivision,
+                            Catalunan Grande, Davao City, Davao Del Sur,
+                            Philippines, 8000
+                        </li>
+                        <br />
+                        <li>zLorenzo@mcm.edu.ph</li>
+                        <br />
+                        <li>www.zLorenzo.com</li>
+                        <br />
+                        <li>@zLorenzo</li>
+                    </ul>
+                </td>
+                <!--2nd Column-->
+                <td></td>
+                <td rowspan="3">Span this</td>
+            </tr>
+
+            <tr>
+                <th style="background-color: #ff000093">
+                    <h2 class="white">EDUCATION</h2>
+                </th>
+            </tr>
+
+            <tr>
+                <td>
+                    <dl style="padding-left:15px; padding-right:15px;">
+                        <dt><b>Elementary School</b><dd>Heartworks Learning Center Inc.</dd><dd style="text-align:right; font-style:italic;">(2003-2003)</dd></dt> <br>
+                        <dt><b>Junior High School</b><dd>San Pedro College - Basic Education</dd><dd style="text-align:right; font-style:italic;">(2021-2021)</dd></dt> <br>
+                        <dt><b>Senior High School</b><dd>Mapua Malayan Colleges Mindanao</dd><dd style="text-align:right; font-style:italic;">(2019-2020)</dd></dt> <br>
+                        <dt><b>Bachelor's Degree in Computer Science</b><dd>Mapua Malayan Colleges Mindanao</dd><dd style="text-align:right; font-style:italic;">(2021-Present)</dd></dt>
+                    </dl>
+                </td>
+            </tr>
+
+            <tr>
+                <th style="background-color: #ff000093">
+                    <h2 class="white">SKILLS</h2>
+                </th>
+                <!--2nd Column-->
+                <th></th>
+                <th style="background-color: #ff000093">
+                    <h2
+                        class="white"
+                        style="text-align: left; padding-left: 20px"
+                    >
+                        REFERENCES
+                    </h2>
+                </th>
+            </tr>
+
+            <tr>
+                <td>Skills here</td>
+                <!--2nd Column-->
+                <td></td>
+                <td>References here</td>
             </tr>
         </table>
     </body>
