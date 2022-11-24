@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            
+            table, th, td {
+                width: 1090px;
+                border-collapse: collapse;
+                border: 1px solid;
+                padding: 10px;
+                padding-left: 30px;
+                padding-right: 30px;
+                text-align: left;
+                background-color: #ff00001a;
+            }
+            nav {
+                font-weight: bold;
+                border: 2px solid;
+                text-align: center;
+                width: 10em;
+                background-color: white;
+            }
+            nav ul {
+                display: none;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            nav:hover ul {
+                display: block;
+            }
+            nav ul li {
+                border-top: 2px solid;
+                background-color: white;
+                width: 10em;
+                color: black;
+            }
+            nav ul li:hover {
+                background-color: lightgray;
+            }
+            a {
+                text-decoration: none;
+            }
+        </style>
+    </head>
+    <body>
+        <nav style="position: absolute;">Form Type
+            <ul>
+               <a href = "#"><li>Player</li></a>
+               <a href = "#"><li>Staff</li></a>
+            </ul>
+         </nav>
+         <br />
+         <br />
+        <table>
+            <form method="post" action="https://malayanmindanao.blackboard.com">
+                <tr>
+                    <th colspan="2" style="background-color: #ff000093">
+                        <h1>
+                            <center>
+                                Paintball Player Information Form
+                            </center>
+                        </h1>
+                        <h3>
+                            <center>
+                                Please fill out after paintball session.
+                            </center>
+                        </h3>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <p style="text-align: justify;">
+                            <b>
+                                Applicant's Name:
+                            </b>
+                            <p>
+                                <input type="text" placeholder="First" size=31px required/>
+                                <input type="text" placeholder="M.I." size=31px/>
+                                <input type="text" placeholder="Last" size=31px/ required>    
+                            </p>
+                        </p>
+                    </th>
+                    <th style="width:20%;">
+                        <p style="text-align: center;">
+                            <dl>
+                                <dt>
+                                    Sex:
+                                </dt>
+                                <dd>
+                                    <input type="radio" name="sex" value="male"/>Male
+                                </dd>
+                                <dd>
+                                    <input type="radio" name="sex" value="female"/>Female
+                                </dd>
+                            </dl>    
+                        </p>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <p>
+                            <b>
+                               Applicant's Address:
+                            </b>
+                        </p>
+                        <p>
+                               <input type="text" placeholder="Street" size=140px required/> 
+                        </p>
+                        <p style="text-align: justify;">
+                            <input type="text" placeholder="City" size=67px required/>
+                            <input type="text" placeholder="Region" size=67px required/>  
+                        </p>
+                        <p style="text-align: justify;">
+                            <input type="text" placeholder="Postal/Zip Code" size=67px/>
+                            <input type="text" placeholder="Country" size=67px required/>  
+                        </p>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border-bottom: hidden;">
+                        <p>
+                            <label>
+                                Date and Time of Birth:
+                                <input type="datetime-local" required/>
+                            </label>
+                            <label>
+                                Date and Time of Birth Confirmation:
+                                <input type="datetime" placeholder="mm / dd / yyyy  hr : mt  sc" required/>
+                            </label>
+                        </p>
+                    </th>
+                    <th style="border-bottom: hidden;">
+                        <p>
+                            <dl>
+                                <dt>
+                                    Team Color:
+                                </dt>
+                                <dd>
+                                    <br />
+                                    <input type="color"/>
+                                </dd>
+                            </dl>
+                        </p>
+                    </th>
+                </tr>
+                <tr>
+                    <th style="border-bottom: hidden;">
+                        Date of Application Filling (Month, Week, and Year):
+                        <p>
+                            <input type="month"/>
+                            <input type="week"/>
+                            <input type="year" placeholder="YYYY"/>
+                        </p>        
+                    </th>
+                    <th style="border-bottom: hidden;">
+                        <dl>
+                            <dt>
+                                Education:
+                            </dt>
+                            <dd>
+                                <input type="checkbox"/>Primary
+                            </dd>
+                            <dd>
+                                <input type="checkbox"/>Secondary
+                            </dd>
+                            <dd>
+                                <input type="checkbox"/>Tertiary
+                            </dd>
+                        </dl>
+                    </th>
+                </tr>
+                <tr>
+                    <th>
+                        <label>
+                            Age:
+                            <input type="number" step="1" value="18" min="18" max="70" required/>
+                        </label>
+                        <label>
+                            E-mail:
+                            <input type="email" placeholder="name@domain.com"/>
+                        </label>
+                        <label>
+                            Telephone #:
+                            <input type = "tel" placeholder = "(###) ###-####" 
+                            pattern = "\(\d{3}\) +\d{3}-\d{4}" required size="10"/>
+                        </label>
+                        <label>
+                            Satisfaction: 0
+                            <input type="range" min="0" max="10" value="5"/> 10
+                        </label>
+                    </th>
+                    <th >
+                        <label>
+                            Time in:
+                            <input type="time" required/>
+                        </label>
+                        <br />
+                        <br />
+                        <label>
+                            Time out:
+                            <input type="time" required/>
+                        </label>
+                    </th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <p> <center>
+                            <input type = "submit" value = "Submit" />
+                            <input type = "reset" value = "Clear" />
+                         </center>
+                        </p> 
+                    </th>
+                </tr>
+            </form>    
+        </table>
+  
+      </form>
+   </body>
+    </body>
+</html>
