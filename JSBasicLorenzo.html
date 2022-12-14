@@ -30,22 +30,20 @@
                         var results = document.getElementById('results');
                         var dateString =
                             document.getElementById('birthdayInput').value;
-                        var bDate = new Date(dateString);
-                        var bYear = parseInt(bDate.getFullYear());
-                        var bMonth = parseInt(bDate.getMonth() - 1);
-                        var bDay = parseInt(bDate.getDate());
+                        var bFullDate = new Date(dateString);
+                        var bYear = bFullDate.getFullYear();
+                        var bMonth = bFullDate.getMonth();
+                        var bDay = bFullDate.getDate();
 
                         results.innerHTML =
                             'You are ' +
-                            Math.floor(parseInt(ageDays()) / 365) +
+                            Math.floor(ageDays(bYear, bMonth, bDay) / 365) +
                             ' years and ' +
-                            (parseInt(ageDays(bYear, bMonth, bDay)) % 365) +
-                            ' days old.\n' +
-                            'There are ' +
+                            (ageDays(bYear, bMonth, bDay) % 365) +
+                            ' days old. There are ' +
                             daysToBday(bMonth, bDay) +
-                            ' days left till your birthday.\n' +
-                            'Your zodiac is ' +
-                            zodiac(bMonth, bday) +
+                            ' days until your birthday and your sign is ' +
+                            zodiac(bMonth, bDay) +
                             '.';
                     }
 
@@ -182,6 +180,8 @@
                             (bMonth == 0 && bDay <= 19)
                         ) {
                             return 'Capricorn';
+                        } else {
+                            return 'null';
                         }
                     }
                 </script>
