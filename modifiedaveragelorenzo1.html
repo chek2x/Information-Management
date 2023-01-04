@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+
+<!-- Fig. 7.7: average.html -->
+<!-- Counter-controlled repetition to calculate a class average. -->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Class Average Program</title>
+        <script>
+            var total; // sum of grades
+            var gradeCounter; // number of grades entered
+            var grade; // grade typed by user (as a string)
+            var gradeValue; // grade value (converted to intetger)
+            var average; // average of all grades
+
+            // Initialization Phase
+            total = 0; // clear total
+            gradeCounter = 1; // prepare to loop
+
+            document.write('<h1>Inputs:');
+
+            // Processing Phase
+            while (gradeCounter <= 10) {
+                // loop 10 times
+                // prompt for input and read grade from user
+                grade = window.prompt(
+                    'Enter integer grade ' + gradeCounter + ':',
+                    '0'
+                );
+
+                document.write(grade + ' ');
+
+                // convert grade from a string to an integer
+                gradeValue = parseInt(grade);
+
+                // add gradeValue to total
+                //90, 80, 85, 89,91, 92, 93,94, 95, 100
+                //0+90= 90 + 80 = 170 + 85 = 255 + 89 = 344 + 91...
+                total = total + gradeValue;
+
+                // add 1 to gradeCounter
+                gradeCounter = gradeCounter + 1;
+                //1,2,3,4,5,6,7,8,9,10
+                //1,3,5,7,9
+            } // end while
+
+            document.write('</h1>');
+
+            // Termination Phase
+            average = total / 10; // calculate the average
+
+            // display average of exam grades
+            document.writeln(
+                '<h1>Total: ' +
+                    total +
+                    '<br>Class average is ' +
+                    average +
+                    '</h1>' +
+                    '<br>'
+            );
+        </script>
+    </head>
+    <body></body>
+</html>

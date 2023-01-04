@@ -1,7 +1,16 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <script type="text/javascript"></script>
+        <style>
+            body {
+                background-image: url('https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbCUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100%;
+                font-family: 'Courier New', Courier, monospace;
+                color: white;
+            }
+        </style>
     </head>
     <body
         style="
@@ -18,11 +27,15 @@
                     document.write(
                         '<h1>Age Calculator with Zodiac Identifier</h1>'
                     );
-                    document.write('<h2>Welcome ' + name + '!</h2>');
+                    document.write(
+                        '<marquee style="width:100%;" scrollamount="15"><h2>Welcome ' +
+                            name +
+                            '!</h2></marquee>'
+                    );
 
-                    const yrNow = parseInt(new Date().getFullYear());
-                    const dateNow = parseInt(new Date().getDate());
-                    const monthNow = parseInt(new Date().getMonth());
+                    const yrNow = new Date().getFullYear();
+                    const dateNow = new Date().getDate();
+                    const monthNow = new Date().getMonth();
 
                     const month30 = [3, 5, 8, 10];
 
@@ -53,11 +66,11 @@
                         var yrDiff = yrNow - bYear - 1;
                         var lpYrs = 0;
 
-                        // Total days before a given month
+                        // Total days before current date.
                         for (i = 0; i < monthNow; i++) {
                             if (month30.includes(i)) {
                                 daysCurYr += 30;
-                            } else if (i == 2) {
+                            } else if (i == 1) {
                                 daysCurYr += 28;
                             } else {
                                 daysCurYr += 31;
@@ -68,7 +81,7 @@
                         for (x = bMonth; x < 12; x++) {
                             if (month30.includes(x)) {
                                 daysBdayYr += 30;
-                            } else if (x == 2) {
+                            } else if (x == 1) {
                                 daysBdayYr += 28;
                             } else {
                                 daysBdayYr += 31;
@@ -78,7 +91,7 @@
                         // Count extra leap year days
                         for (j = yrNow; j >= bYear; j--) {
                             if (j % 4 == 0) {
-                                lpYrs++;
+                                lpYrs += 1;
                             }
                         }
 
@@ -94,7 +107,7 @@
                         for (i = 0; i < bMonth; i++) {
                             if (month30.includes(i)) {
                                 daysBdayYr += 30;
-                            } else if (i == 2) {
+                            } else if (i == 1) {
                                 daysBdayYr += 28;
                             } else {
                                 daysBdayYr += 31;
@@ -105,7 +118,7 @@
                         for (x = monthNow; x < 12; x++) {
                             if (month30.includes(x)) {
                                 daysCurYr += 30;
-                            } else if (x == 2) {
+                            } else if (x == 1) {
                                 daysCurYr += 28;
                             } else {
                                 daysCurYr += 31;
@@ -191,8 +204,12 @@
                         to compute for your age in years and days.<br />
                         We'll also throw in your zodiac sign for fun.
                     </h4>
-                    <input id="birthdayInput" type="date" / > <input
-                    type="button" value="Calculate" onclick="printResults()" / >
+                    <input id="birthdayInput" type="date" />
+                    <input
+                        type="button"
+                        value="Calculate"
+                        onclick="printResults()"
+                    />
                     <h3 id="results"></h3>
                 </form>
             </center>

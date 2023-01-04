@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body {
+                background-image: url('https://images.unsplash.com/photo-1553095066-5014bc7b7f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8d2FsbCUyMGJhY2tncm91bmR8ZW58MHx8MHx8&w=1000&q=80');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100%;
+
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            .style1 {
+                color: white;
+                font-size: 30px;
+            }
+
+            .warning {
+                color: red;
+            }
+        </style>
+    </head>
+    <body
+        style="
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        "
+    >
+        <center>
+            <script>
+                var sides = window.prompt('Enter number of sides:', '3');
+                var angle = (sides - 2) * 180;
+                var polygon = 'Side input is beyond range.';
+                var polyImg =
+                    'https://i.kym-cdn.com/entries/icons/original/000/043/047/sad_emoji_meme.jpg';
+
+                if (sides == 3) {
+                    polygon = 'Triangle';
+                    polyImg =
+                        'https://www.freeiconspng.com/uploads/black-and-white-triangle-png-16.png';
+                } else if (sides == 4) {
+                    polygon = 'Quadrilateral';
+                    polyImg =
+                        'https://www.freeiconspng.com/uploads/transparent-square-11.png';
+                } else if (sides == 5) {
+                    polygon = 'Pentagon';
+                    polyImg =
+                        'https://www.pngkey.com/png/full/234-2340205_png-file-svg-pentagon-shape-png.png';
+                } else if (sides == 6) {
+                    polygon = 'Hexagon';
+                    polyImg = 'https://i.stack.imgur.com/GgWmf.png';
+                } else if (sides == 7) {
+                    polygon = 'Heptagon';
+                    polyImg =
+                        'https://www.kidsmathgamesonline.com/images/pictures/shapes/heptagon.jpg';
+                } else if (sides == 8) {
+                    polygon = 'Octagon';
+                    polyImg =
+                        'https://images.squarespace-cdn.com/content/v1/56808a88a12f44019ca5f3f2/1520953716774-X0YWGETJ3IBI4H8T7M09/Screen+Shot+2018-03-01+at+7.55.36+AM.png';
+                } else if (sides == 9) {
+                    polygon = 'Nonagon';
+                    polyImg =
+                        'https://www.shutterstock.com/image-vector/plane-polygon-nine-angles-sides-260nw-1469230538.jpg';
+                } else if (sides == 10) {
+                    polygon = 'Decagon';
+                    polyImg =
+                        'https://www.kidsmathgamesonline.com/images/pictures/shapes/decagon.jpg';
+                } else if (sides == 11) {
+                    polygon = 'Hendecagon';
+                    polyImg =
+                        'https://images.twinkl.co.uk/tw1n/image/private/t_630/u/ux/screenshot-2022-09-27-at-15.01.35_ver_1.png';
+                } else if (sides == 12) {
+                    polygon = 'Dodecagon';
+                    polyImg =
+                        'https://images.twinkl.co.uk/tr/raw/upload/u/ux/512px-regular-polygon-12-annotated.svg_ver_1.png';
+                }
+
+                document.write(
+                    '<p class="style1">Number of sides: ' + sides + '<br>'
+                );
+                document.write('Sum of Angles:' + angle + '<br>');
+                document.write('Polygon Name:' + polygon + '</p>');
+
+                document.write(
+                    '<img src="' +
+                        polyImg +
+                        '" alt="' +
+                        polygon +
+                        '" width="400px"'
+                );
+            </script>
+        </center>
+    </body>
+</html>
