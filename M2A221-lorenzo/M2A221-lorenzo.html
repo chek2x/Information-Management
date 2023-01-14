@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quote Generator</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+            body {
+                background-image: url('bg.png');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100%;
+                font-family: 'Dancing Script', cursive;
+                font-size: 30px;
+            }
+
+            table,
+            th,
+            td {
+                border: 2px solid #d0d0ca;
+                background-color: #eceae4;
+                border-collapse: collapse;
+            }
+
+            table {
+                margin: 20px;
+            }
+
+            th {
+                background-color: #aeaba3;
+            }
+
+            .button {
+                font-family: 'Dancing Script', cursive;
+                align-self: center;
+                background-color: #eceae4;
+                background-image: none;
+                background-position: 0 90%;
+                background-repeat: repeat no-repeat;
+                background-size: 4px 3px;
+                border-radius: 15px 225px 255px 15px 15px 255px 225px 15px;
+                border-style: solid;
+                border-width: 2px;
+                box-shadow: rgba(0, 0, 0, 0.2) 15px 28px 25px -18px;
+                box-sizing: border-box;
+                color: #41403e;
+                cursor: pointer;
+                display: inline-block;
+                font-size: 30px;
+                line-height: 23px;
+                outline: none;
+                padding: 0.75rem;
+                text-decoration: none;
+                transition: all 235ms ease-in-out;
+                border-bottom-left-radius: 15px 255px;
+                border-bottom-right-radius: 225px 15px;
+                border-top-left-radius: 255px 15px;
+                border-top-right-radius: 15px 225px;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+            }
+
+            .button:hover {
+                box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 8px -5px;
+                transform: translate3d(0, 2px, 0);
+            }
+
+            .button:focus {
+                box-shadow: rgba(0, 0, 0, 0.3) 2px 8px 4px -6px;
+            }
+
+            .state1 {
+                margin: auto;
+            }
+
+            .state2 {
+                position: absolute;
+                left: 50%;
+                top: 0%;
+                transform: translate(-50%, -250%);
+            }
+        </style>
+        <script type="text/javascript">
+            let frequency1 = 0;
+            let frequency2 = 0;
+            let frequency3 = 0;
+            let frequency4 = 0;
+            let frequency5 = 0;
+            let frequency6 = 0;
+            let frequency7 = 0;
+            let frequency8 = 0;
+            let frequency9 = 0;
+            let frequency10 = 0;
+            let prev = 0;
+
+            function start() {
+                let btn = document.getElementById('generate');
+                btn.addEventListener('click', Gen, false);
+            }
+
+            function Qcount() {
+                let edit = document.getElementById('quotes');
+                edit.innerHTML =
+                    '<table>' +
+                    '<thead><th colspan="2">Quote Frequencies</th></thead>' +
+                    '<thead><th>Philosopher</th><th style="padding-left: 10px; padding-right: 10px;">Frequency</th>' +
+                    '<tbody><tr><td>Confucius</td><td>' +
+                    frequency1 +
+                    '</td></tr>' +
+                    '<tr><td>Aristotle</td><td>' +
+                    frequency2 +
+                    '</td></tr>' +
+                    '<tr><td>Socrates</td><td>' +
+                    frequency3 +
+                    '</td></tr>' +
+                    '<tr><td>Friedrich Nietzsche</td><td>' +
+                    frequency4 +
+                    '</td></tr>' +
+                    '<tr><td>Karl Marx</td><td>' +
+                    frequency5 +
+                    '</td></tr>' +
+                    '<tr><td>Pythagoras</td><td>' +
+                    frequency6 +
+                    '</td></tr>' +
+                    '<tr><td>Sun Tzu</td><td>' +
+                    frequency7 +
+                    '</td></tr>' +
+                    '<tr><td>Simone de Beauvoir</td><td>' +
+                    frequency8 +
+                    '</td></tr>' +
+                    '<tr><td>Thomas Hobbes</td><td>' +
+                    frequency9 +
+                    '</td></tr>' +
+                    '<tr><td>Niccolo Machiavelli</td><td>' +
+                    frequency10 +
+                    '</td></tr>' +
+                    '</tbody></table>';
+            }
+
+            function Gen() {
+                let number = Math.ceil(Math.random() * 10);
+
+                // Makes sure 'Generate' button does not get same image twice in a row.
+                while (number == prev) {
+                    number = Math.ceil(Math.random() * 10);
+                }
+
+                prev = number;
+
+                let picture = '';
+                let alternative = '';
+
+                switch (number) {
+                    case 1:
+                        picture = 'confucius.png';
+                        alternative = 'Confucius';
+                        frequency1++;
+                        break;
+                    case 2:
+                        picture = 'aristotle.png';
+                        alternative = 'Artistotle';
+                        frequency2++;
+                        break;
+                    case 3:
+                        picture = 'socrates.png';
+                        alternative = 'Socrates';
+                        frequency3++;
+                        break;
+                    case 4:
+                        picture = 'nietzsche.png';
+                        alternative = 'Nietzsche';
+                        frequency4++;
+                        break;
+                    case 5:
+                        picture = 'marx.png';
+                        alternative = 'Marx';
+                        frequency5++;
+                        break;
+                    case 6:
+                        picture = 'pythagoras.png';
+                        alternative = 'Pythagoras';
+                        frequency6++;
+                        break;
+                    case 7:
+                        picture = 'suntzu.png';
+                        alternative = 'Sun Tzu';
+                        frequency7++;
+                        break;
+                    case 8:
+                        picture = 'beauvoir.png';
+                        alternative = 'Beauvoir';
+                        frequency8++;
+                        break;
+                    case 9:
+                        picture = 'hobbes.png';
+                        alternative = 'Hobbes';
+                        frequency9++;
+                        break;
+                    case 10:
+                        picture = 'machiavelli.png';
+                        alternative = 'Machiavelli';
+                        frequency10++;
+                        break;
+                }
+
+                pic.setAttribute('src', picture);
+                pic.setAttribute('alt', alternative);
+                general.setAttribute(
+                    'style',
+                    'position: absolute; left: 50%; top: 70%; transform: translate(-50%, -50%);'
+                );
+
+                Qcount();
+            }
+
+            window.addEventListener('load', start, false);
+        </script>
+    </head>
+    <body>
+        <center>
+            <div
+                id="general"
+                style="
+                    position: absolute;
+                    left: 50%;
+                    top: 50%;
+                    transform: translate(-50%, -50%);
+                "
+            >
+                <p
+                    class="state1"
+                    style="
+                        font-size: 100px;
+                        font-style: italic;
+                        font-weight: 600;
+                        padding: 0px;
+                        margin: 0px;
+                    "
+                >
+                    Quote Generator
+                </p>
+                <form>
+                    <img id="pic" src="" style="width: 1000px" />
+                    <input
+                        class="button"
+                        id="generate"
+                        type="button"
+                        value="Generate"
+                        style="text-align: center"
+                    />
+                </form>
+                <br />
+                <div id="quotes"></div>
+            </div>
+        </center>
+    </body>
+</html>
