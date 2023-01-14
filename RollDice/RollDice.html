@@ -7,13 +7,24 @@
         <meta charset="utf-8" />
         <title>Die Rolling Frequencies</title>
         <style type="text/css">
+            @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+            body {
+                background-image: url('bg.png');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100%;
+                font-family: 'Dancing Script', cursive;
+            }
+
             img {
                 margin-right: 10px;
             }
-            table {
+
+            table:nth-child(1) {
                 border-collapse: collapse;
-                background-color: lightblue;
             }
+
             table,
             td,
             th {
@@ -21,13 +32,52 @@
                 padding: 4px;
                 margin-top: 20px;
             }
+
             th {
                 text-align: left;
-                color: white;
-                background-color: darkblue;
+                color: #dfd4ba;
+                background-color: #5f1a1f;
             }
+
             td:nth-of-type(3) {
                 text-align: right;
+            }
+
+            .button {
+                background-color: #5f1a1f;
+                border: 2px solid #391416;
+                border-radius: 30px;
+                box-shadow: #391416 4px 4px 0 0;
+                color: #dfd4ba;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Dancing Script', cursive;
+                font-weight: 500;
+                font-size: 18px;
+                padding: 0 18px;
+                line-height: 50px;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                width: 120px;
+            }
+
+            .button:hover {
+                background-color: rgb(159, 41, 41);
+            }
+
+            .button:active {
+                box-shadow: #391416 2px 2px 0 0;
+                transform: translate(2px, 2px);
+            }
+
+            @media (min-width: 720px) {
+                .button:active {
+                    min-width: 120px;
+                    padding: 0 25px;
+                }
             }
         </style>
         <script>
@@ -90,45 +140,27 @@
 
                 switch (face) {
                     case 1:
-                        dieImg.setAttribute(
-                            'src',
-                            'https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367354?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=cuhbcD5TURDPNgO5fnndI9Vc9OMJswY%2BhUKbznSboA4%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die1.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkcwRQIhALDxCccrMurXgMq5n8x6WAl64JitMnH98srHYA4wWhAyAiAh0CMmavSXjkkjEEbZEh6mTBBxZZ94H98aPjUc3qxq8yrkBAj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDYzNTU2NzkyNDE4MyIM2Z4ZAhN7oBHmrf0YKrgE2pA%2BTk%2FrWf5p6HCAwBgV5xanWXAFS1Zhj9S%2FADpwJPN7hMzZkHRD6TR4wjpSq8fclsSXnyAG9kISzYTIV%2FHiFCPUAIPYjI41otGQRlCKH1ws1UXAhwLo9Zr%2FWvTwhk9LlkX2zjJdr%2Buo%2FFdbrXawBcgreapOrLNwud%2FjS%2BjAlBVRsV6Xi3g28lwPuMXu3Np%2BJCYli5dLdBMmwTgO6GMaCI%2F4gcN4yiOIxYdZsXr4aFTL9lbQF7trdg1Xrb2YY5XdvMxJl6L0pOzG9IepzYSbppg6Npuxz%2FkT1l7wig4qxaMuGC4fzO%2BCXMzxrPiXOs%2F5UgLpG4N%2Bov7v3xCyETSaW5HoOL5YqO2mPd%2FDdQv78Ql5ciVmhsdlh91jfseHX8nB0gIJ0qz9gd5O8Ff%2FaWUOkgd0tp1VmNnuJj1B8YAmFhRARHHlpobJ8Gq0Dyq5ady3MVbcDvCV07FiMu7kvaEnECI9%2BuFGwYwMqrUG5joLRTfvM%2BTBUeYJHAoWZ7Jjmh0JIwkI%2FhADitPFh8oqFk%2FiE89LSBl5QmKTB%2FBhJs88jafQTMXhhSWTtq64GlBmyiSIs1xC2qca50PGWPpqZd3G4LYCNmxzb75l%2BgRuLWWvD%2Bjyx21ZhHPOfuBDbIJ%2BYGLHaN6hg%2BtNzqRG8xhcCT%2BfIPBW8KA73WwS%2B4Hwh9xx26aUFYWGuiOnI0FVN8dZBtBeKpUBdIZ5sHIURqFO%2Bhjvn1NCwDP%2FnL8a2MmK%2FW5tpS67lC%2BO8CdtFzDQyNmdBjqpAbySr9352X4HHLQ9ZvjQLynD7tg8utAtGzfRKU99vsyRCaulprUb6ziL2RJAezozcLPIIsKvvVn9vNQYPspI2F0Sfj1IxCCpivzyMWFl0sGrH866mFKfeNAV1J8c6O4TOoWgjnKEHdyH9owglW4162gbZ3zj6ixPO3ZduVnB3i5M%2BE5H%2B0s9ytXyGgA98rXWBPzbJ%2BA4nBnGOeDejqzmUYtRrTONf5q4AlE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLQFNJ2Z4Y%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=b792ace8a9895f3a54fd5a5b45710da83814ca70e2fbde55f65b4b6bd1bb0ca9'
-                        );
+                        dieImg.setAttribute('src', 'die1.png');
                         break;
 
                     case 2:
-                        dieImg.setAttribute(
-                            'src',
-                            'https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367356?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=RBDi6Mio9%2F8SRG5T6Jb9h888BQPn%2Bp%2BEYc7gWT8Og6s%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die2.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkgwRgIhAO3lo3umG0kPvefZ7hlm8WQRP%2BrZhvMlq7MIckrsgXSZAiEArdbscjP6z4hcMQDT4MF0CdlJtkgOx9nFfEjoS4fI6WYq5AQI%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgw2MzU1Njc5MjQxODMiDBpZVLm2GruMm8rOiyq4BLw04stFRWwz4sA%2BIiazFnddbgPS5tun4x4wikAcdpHGxVgfXhqoBVtdcovEgU0o209W%2BcLgmWKy88a1Z7kC%2BJ2mhq78%2FbLd6YsFPw5Hq1ltpNz0JLVLHcaxvUq%2BbwTiZ2iFdKIB3W9wAQ3gjn%2BI8ua0XwwdA10PHkzyPh825pFKZgXf%2BBZZIp4H6jTwW8PLDu9%2BernkHRXYQgh9n9OTIhubfsZhWSf5tHQwUF%2Bo1wCQpuV8CJze5YhZQPBcApOLxYW2OmSgxKb9rLkgkMJ1yeDYIfISePqVqyvX0cj9%2Fw39PVzYtswoPuBXBngKXHJlA79Kk%2BYnyj4eEJedPU9ANONsoguNyfQ4V0WQ86uty%2BBx5c9%2BRsJKzy3ISa91eB%2BVrHqwUpw74sq866tNPpjzwwvjCNi2zDCsfkCn%2FKA5Y0eqrjVlz9wb53tLEvr8xb6E9FxuAZK8b9sy0XZu5d5cjEcuUAOg9zsUyG2mF7S86fneog4e7ihqDf1ZnL4sng0Jat0s8o%2BL3KF2qTT6aaJaembgTNmNoWs41KTGJarKThs1WlBAqT1MJK363Xt4BcRpy3%2FnkWcRBZuXp4aM%2BTiNphcDVS5feLrxqhKhSusJNFDTMZlEJRbAhfyWQWX4%2B%2BPsAihsQmRJehmDhqsM8tGoSUNCzlYXLMYCTxLQ5iG8icQFkxeC8yto4my%2FKskmWwhsEUReX7S51yhZHmYEN9vAF67TUqigKpNVEypRs8kXNKcU8D2NLSj8csUwgs%2FZnQY6qAFlG25nm73tZ4GMhGlsj5eZL5l%2B7FtUNDR0wc3tnPFZCFOuEMk29qNkPOb9VgCVATXWYCAfcBby5HKQvA0DUB%2BPUNtIqCjaFRxowzkeurFJMhWVUy6o61NNax05owVOQynsMvnZ9i2TWY6bpVUUJh08yE%2FcoenmJlxoHzp2s7KxbZT6c4IsushT1KyziCgTIg7BLlAo5QRPfnt3q%2Fa2JJqTRElnNejYhNc%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLSTBNJZPH%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=94cf94751fe5df68931c318cbc82e70a06829fa741d4be34729f942f1770d530'
-                        );
+                        dieImg.setAttribute('src', 'die2.png');
                         break;
 
                     case 3:
-                        dieImg.setAttribute(
-                            'src',
-                            'https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367357?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=f9eo%2Fo8BnLhYO3c49hF96kx%2BJqik40FShFNMxshl43Y%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die3.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkgwRgIhAO3lo3umG0kPvefZ7hlm8WQRP%2BrZhvMlq7MIckrsgXSZAiEArdbscjP6z4hcMQDT4MF0CdlJtkgOx9nFfEjoS4fI6WYq5AQI%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgw2MzU1Njc5MjQxODMiDBpZVLm2GruMm8rOiyq4BLw04stFRWwz4sA%2BIiazFnddbgPS5tun4x4wikAcdpHGxVgfXhqoBVtdcovEgU0o209W%2BcLgmWKy88a1Z7kC%2BJ2mhq78%2FbLd6YsFPw5Hq1ltpNz0JLVLHcaxvUq%2BbwTiZ2iFdKIB3W9wAQ3gjn%2BI8ua0XwwdA10PHkzyPh825pFKZgXf%2BBZZIp4H6jTwW8PLDu9%2BernkHRXYQgh9n9OTIhubfsZhWSf5tHQwUF%2Bo1wCQpuV8CJze5YhZQPBcApOLxYW2OmSgxKb9rLkgkMJ1yeDYIfISePqVqyvX0cj9%2Fw39PVzYtswoPuBXBngKXHJlA79Kk%2BYnyj4eEJedPU9ANONsoguNyfQ4V0WQ86uty%2BBx5c9%2BRsJKzy3ISa91eB%2BVrHqwUpw74sq866tNPpjzwwvjCNi2zDCsfkCn%2FKA5Y0eqrjVlz9wb53tLEvr8xb6E9FxuAZK8b9sy0XZu5d5cjEcuUAOg9zsUyG2mF7S86fneog4e7ihqDf1ZnL4sng0Jat0s8o%2BL3KF2qTT6aaJaembgTNmNoWs41KTGJarKThs1WlBAqT1MJK363Xt4BcRpy3%2FnkWcRBZuXp4aM%2BTiNphcDVS5feLrxqhKhSusJNFDTMZlEJRbAhfyWQWX4%2B%2BPsAihsQmRJehmDhqsM8tGoSUNCzlYXLMYCTxLQ5iG8icQFkxeC8yto4my%2FKskmWwhsEUReX7S51yhZHmYEN9vAF67TUqigKpNVEypRs8kXNKcU8D2NLSj8csUwgs%2FZnQY6qAFlG25nm73tZ4GMhGlsj5eZL5l%2B7FtUNDR0wc3tnPFZCFOuEMk29qNkPOb9VgCVATXWYCAfcBby5HKQvA0DUB%2BPUNtIqCjaFRxowzkeurFJMhWVUy6o61NNax05owVOQynsMvnZ9i2TWY6bpVUUJh08yE%2FcoenmJlxoHzp2s7KxbZT6c4IsushT1KyziCgTIg7BLlAo5QRPfnt3q%2Fa2JJqTRElnNejYhNc%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLSTBNJZPH%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=459eaa9e1cc635402c728d7dc9ebbd1b4290c2619453a37543d26b258a90f196'
-                        );
+                        dieImg.setAttribute('src', 'die3.png');
                         break;
 
                     case 4:
-                        dieImg.setAttribute(
-                            'src',
-                            'https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367358?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=3Izaituvb4CBYOeUjDfoNp3rHgzP5ZQyJg02WGcYlfY%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die4.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkgwRgIhAO3lo3umG0kPvefZ7hlm8WQRP%2BrZhvMlq7MIckrsgXSZAiEArdbscjP6z4hcMQDT4MF0CdlJtkgOx9nFfEjoS4fI6WYq5AQI%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgw2MzU1Njc5MjQxODMiDBpZVLm2GruMm8rOiyq4BLw04stFRWwz4sA%2BIiazFnddbgPS5tun4x4wikAcdpHGxVgfXhqoBVtdcovEgU0o209W%2BcLgmWKy88a1Z7kC%2BJ2mhq78%2FbLd6YsFPw5Hq1ltpNz0JLVLHcaxvUq%2BbwTiZ2iFdKIB3W9wAQ3gjn%2BI8ua0XwwdA10PHkzyPh825pFKZgXf%2BBZZIp4H6jTwW8PLDu9%2BernkHRXYQgh9n9OTIhubfsZhWSf5tHQwUF%2Bo1wCQpuV8CJze5YhZQPBcApOLxYW2OmSgxKb9rLkgkMJ1yeDYIfISePqVqyvX0cj9%2Fw39PVzYtswoPuBXBngKXHJlA79Kk%2BYnyj4eEJedPU9ANONsoguNyfQ4V0WQ86uty%2BBx5c9%2BRsJKzy3ISa91eB%2BVrHqwUpw74sq866tNPpjzwwvjCNi2zDCsfkCn%2FKA5Y0eqrjVlz9wb53tLEvr8xb6E9FxuAZK8b9sy0XZu5d5cjEcuUAOg9zsUyG2mF7S86fneog4e7ihqDf1ZnL4sng0Jat0s8o%2BL3KF2qTT6aaJaembgTNmNoWs41KTGJarKThs1WlBAqT1MJK363Xt4BcRpy3%2FnkWcRBZuXp4aM%2BTiNphcDVS5feLrxqhKhSusJNFDTMZlEJRbAhfyWQWX4%2B%2BPsAihsQmRJehmDhqsM8tGoSUNCzlYXLMYCTxLQ5iG8icQFkxeC8yto4my%2FKskmWwhsEUReX7S51yhZHmYEN9vAF67TUqigKpNVEypRs8kXNKcU8D2NLSj8csUwgs%2FZnQY6qAFlG25nm73tZ4GMhGlsj5eZL5l%2B7FtUNDR0wc3tnPFZCFOuEMk29qNkPOb9VgCVATXWYCAfcBby5HKQvA0DUB%2BPUNtIqCjaFRxowzkeurFJMhWVUy6o61NNax05owVOQynsMvnZ9i2TWY6bpVUUJh08yE%2FcoenmJlxoHzp2s7KxbZT6c4IsushT1KyziCgTIg7BLlAo5QRPfnt3q%2Fa2JJqTRElnNejYhNc%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLSTBNJZPH%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=65828e0df971dcb1cfaf575e99291045f9352c1e6d0d3f085c566b4b6f0547c4'
-                        );
+                        dieImg.setAttribute('src', 'die4.png');
                         break;
 
                     case 5:
-                        dieImg.setAttribute(
-                            'src',
-                            'https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367360?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=Jw4AL9BLP8lSd0DZU2y4DR3tFiRzbAe5EC2QINb5B%2FE%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die5.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkgwRgIhAO3lo3umG0kPvefZ7hlm8WQRP%2BrZhvMlq7MIckrsgXSZAiEArdbscjP6z4hcMQDT4MF0CdlJtkgOx9nFfEjoS4fI6WYq5AQI%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgw2MzU1Njc5MjQxODMiDBpZVLm2GruMm8rOiyq4BLw04stFRWwz4sA%2BIiazFnddbgPS5tun4x4wikAcdpHGxVgfXhqoBVtdcovEgU0o209W%2BcLgmWKy88a1Z7kC%2BJ2mhq78%2FbLd6YsFPw5Hq1ltpNz0JLVLHcaxvUq%2BbwTiZ2iFdKIB3W9wAQ3gjn%2BI8ua0XwwdA10PHkzyPh825pFKZgXf%2BBZZIp4H6jTwW8PLDu9%2BernkHRXYQgh9n9OTIhubfsZhWSf5tHQwUF%2Bo1wCQpuV8CJze5YhZQPBcApOLxYW2OmSgxKb9rLkgkMJ1yeDYIfISePqVqyvX0cj9%2Fw39PVzYtswoPuBXBngKXHJlA79Kk%2BYnyj4eEJedPU9ANONsoguNyfQ4V0WQ86uty%2BBx5c9%2BRsJKzy3ISa91eB%2BVrHqwUpw74sq866tNPpjzwwvjCNi2zDCsfkCn%2FKA5Y0eqrjVlz9wb53tLEvr8xb6E9FxuAZK8b9sy0XZu5d5cjEcuUAOg9zsUyG2mF7S86fneog4e7ihqDf1ZnL4sng0Jat0s8o%2BL3KF2qTT6aaJaembgTNmNoWs41KTGJarKThs1WlBAqT1MJK363Xt4BcRpy3%2FnkWcRBZuXp4aM%2BTiNphcDVS5feLrxqhKhSusJNFDTMZlEJRbAhfyWQWX4%2B%2BPsAihsQmRJehmDhqsM8tGoSUNCzlYXLMYCTxLQ5iG8icQFkxeC8yto4my%2FKskmWwhsEUReX7S51yhZHmYEN9vAF67TUqigKpNVEypRs8kXNKcU8D2NLSj8csUwgs%2FZnQY6qAFlG25nm73tZ4GMhGlsj5eZL5l%2B7FtUNDR0wc3tnPFZCFOuEMk29qNkPOb9VgCVATXWYCAfcBby5HKQvA0DUB%2BPUNtIqCjaFRxowzkeurFJMhWVUy6o61NNax05owVOQynsMvnZ9i2TWY6bpVUUJh08yE%2FcoenmJlxoHzp2s7KxbZT6c4IsushT1KyziCgTIg7BLlAo5QRPfnt3q%2Fa2JJqTRElnNejYhNc%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLSTBNJZPH%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=6ee5902da1dbce779c14c34e390f023169e142d28e834b52c76a8e304ac3723f'
-                        );
+                        dieImg.setAttribute('src', 'die5.png');
                         break;
 
                     case 6:
-                        dieImg.setAttribute(
-                            'src',
-                            'https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367359?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=7Kwh%2BeCZB7Ng4TlaE5Tw5m0W8b06hZDBGCEEntd8blo%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die6.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkgwRgIhAO3lo3umG0kPvefZ7hlm8WQRP%2BrZhvMlq7MIckrsgXSZAiEArdbscjP6z4hcMQDT4MF0CdlJtkgOx9nFfEjoS4fI6WYq5AQI%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FARACGgw2MzU1Njc5MjQxODMiDBpZVLm2GruMm8rOiyq4BLw04stFRWwz4sA%2BIiazFnddbgPS5tun4x4wikAcdpHGxVgfXhqoBVtdcovEgU0o209W%2BcLgmWKy88a1Z7kC%2BJ2mhq78%2FbLd6YsFPw5Hq1ltpNz0JLVLHcaxvUq%2BbwTiZ2iFdKIB3W9wAQ3gjn%2BI8ua0XwwdA10PHkzyPh825pFKZgXf%2BBZZIp4H6jTwW8PLDu9%2BernkHRXYQgh9n9OTIhubfsZhWSf5tHQwUF%2Bo1wCQpuV8CJze5YhZQPBcApOLxYW2OmSgxKb9rLkgkMJ1yeDYIfISePqVqyvX0cj9%2Fw39PVzYtswoPuBXBngKXHJlA79Kk%2BYnyj4eEJedPU9ANONsoguNyfQ4V0WQ86uty%2BBx5c9%2BRsJKzy3ISa91eB%2BVrHqwUpw74sq866tNPpjzwwvjCNi2zDCsfkCn%2FKA5Y0eqrjVlz9wb53tLEvr8xb6E9FxuAZK8b9sy0XZu5d5cjEcuUAOg9zsUyG2mF7S86fneog4e7ihqDf1ZnL4sng0Jat0s8o%2BL3KF2qTT6aaJaembgTNmNoWs41KTGJarKThs1WlBAqT1MJK363Xt4BcRpy3%2FnkWcRBZuXp4aM%2BTiNphcDVS5feLrxqhKhSusJNFDTMZlEJRbAhfyWQWX4%2B%2BPsAihsQmRJehmDhqsM8tGoSUNCzlYXLMYCTxLQ5iG8icQFkxeC8yto4my%2FKskmWwhsEUReX7S51yhZHmYEN9vAF67TUqigKpNVEypRs8kXNKcU8D2NLSj8csUwgs%2FZnQY6qAFlG25nm73tZ4GMhGlsj5eZL5l%2B7FtUNDR0wc3tnPFZCFOuEMk29qNkPOb9VgCVATXWYCAfcBby5HKQvA0DUB%2BPUNtIqCjaFRxowzkeurFJMhWVUy6o61NNax05owVOQynsMvnZ9i2TWY6bpVUUJh08yE%2FcoenmJlxoHzp2s7KxbZT6c4IsushT1KyziCgTIg7BLlAo5QRPfnt3q%2Fa2JJqTRElnNejYhNc%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLSTBNJZPH%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=8efffd18fd442343ac071082d22b65f62be3c6ad9cfc07248a73ff7efff12b25'
-                        );
+                        dieImg.setAttribute('src', 'die6.png');
                         break;
                 }
                 dieImg.setAttribute('alt', 'die with ' + face + ' spot(s)');
@@ -162,10 +194,41 @@
                     frequency6,
                 ];
                 let faceArr = [];
+                let dump = [];
+                let addString = '';
+
+                for (let i = 0; i < arr.length; i++) {
+                    let counter = 1;
+                    let faceString = i + 1;
+                    for (let j = i + 1; j < arr.length; j++) {
+                        if (arr[i] == arr[j]) {
+                            if (dump.includes(arr[i])) {
+                                continue;
+                            } else {
+                                counter++;
+                                faceString += ', ' + (j + 1);
+                            }
+                        }
+                    }
+
+                    dump.push(arr[i]);
+
+                    if (counter > 1) {
+                        addString +=
+                            '<tr><td>' +
+                            faceString +
+                            '</td><td>' +
+                            arr[i] +
+                            '</td><td>' +
+                            formatPercent(arr[i] / totalDice) +
+                            '%</td></tr>';
+                    }
+                }
+
+                dump = [];
 
                 tableDiv.innerHTML =
                     '<table>' +
-                    '<caption>Die Rolling Frequencies</caption>' +
                     '<thead><th>Face</th><th>Frequency</th>' +
                     '<th style="padding-right: 20px;">Percent</th></thead>' +
                     '<tbody><tr><td>1</td><td>' +
@@ -208,22 +271,13 @@
                     '</td><td style="text-align: right;">' +
                     formatPercent(min / totalDice) +
                     '%</td></tr>' +
+                    '<tr><th style="padding-right: 10px; border-bottom: 5px solid black;">Total Rolls</th><td style="border-bottom: 5px solid black;" colspan="2">' +
+                    totalDice +
+                    '</td></tr>' +
                     '<tr><th style="text-align: center;" colspan="3">Repeating Frequency</th></tr>' +
-                    '<tr><th>Frequency</th><th>Faces</th><th>Percent</th></tr>' +
-                    '<tr>';
-
-                for (let i = 0; i < arr.length; i++) {
-                    let counter = 0;
-                    for (let j = i + 1; j < arr.length; j++) {
-                        if (arr[i] == arr[j]) {
-                            counter++;
-                        }
-                        tableDiv.innerHTML += '<td>' + counter + '</td>';
-                    }
-                }
-
-                tableDiv.innerHTML =
-                    tableDiv.innerHTML + '</tr></tbody></table>';
+                    '<tr><th>Faces</th><th>Frequency</th><th>Percent</th></tr>' +
+                    addString +
+                    '</tbody></table>';
             } // end function updateFrequencyTable
 
             // format percentage
@@ -235,83 +289,168 @@
             window.addEventListener('load', start, false);
         </script>
     </head>
-    <body
-        style="
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-        "
-    >
-        <p>
-            <img
-                id="die1"
-                src="https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367354?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=cuhbcD5TURDPNgO5fnndI9Vc9OMJswY%2BhUKbznSboA4%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die1.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkcwRQIhALDxCccrMurXgMq5n8x6WAl64JitMnH98srHYA4wWhAyAiAh0CMmavSXjkkjEEbZEh6mTBBxZZ94H98aPjUc3qxq8yrkBAj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDYzNTU2NzkyNDE4MyIM2Z4ZAhN7oBHmrf0YKrgE2pA%2BTk%2FrWf5p6HCAwBgV5xanWXAFS1Zhj9S%2FADpwJPN7hMzZkHRD6TR4wjpSq8fclsSXnyAG9kISzYTIV%2FHiFCPUAIPYjI41otGQRlCKH1ws1UXAhwLo9Zr%2FWvTwhk9LlkX2zjJdr%2Buo%2FFdbrXawBcgreapOrLNwud%2FjS%2BjAlBVRsV6Xi3g28lwPuMXu3Np%2BJCYli5dLdBMmwTgO6GMaCI%2F4gcN4yiOIxYdZsXr4aFTL9lbQF7trdg1Xrb2YY5XdvMxJl6L0pOzG9IepzYSbppg6Npuxz%2FkT1l7wig4qxaMuGC4fzO%2BCXMzxrPiXOs%2F5UgLpG4N%2Bov7v3xCyETSaW5HoOL5YqO2mPd%2FDdQv78Ql5ciVmhsdlh91jfseHX8nB0gIJ0qz9gd5O8Ff%2FaWUOkgd0tp1VmNnuJj1B8YAmFhRARHHlpobJ8Gq0Dyq5ady3MVbcDvCV07FiMu7kvaEnECI9%2BuFGwYwMqrUG5joLRTfvM%2BTBUeYJHAoWZ7Jjmh0JIwkI%2FhADitPFh8oqFk%2FiE89LSBl5QmKTB%2FBhJs88jafQTMXhhSWTtq64GlBmyiSIs1xC2qca50PGWPpqZd3G4LYCNmxzb75l%2BgRuLWWvD%2Bjyx21ZhHPOfuBDbIJ%2BYGLHaN6hg%2BtNzqRG8xhcCT%2BfIPBW8KA73WwS%2B4Hwh9xx26aUFYWGuiOnI0FVN8dZBtBeKpUBdIZ5sHIURqFO%2Bhjvn1NCwDP%2FnL8a2MmK%2FW5tpS67lC%2BO8CdtFzDQyNmdBjqpAbySr9352X4HHLQ9ZvjQLynD7tg8utAtGzfRKU99vsyRCaulprUb6ziL2RJAezozcLPIIsKvvVn9vNQYPspI2F0Sfj1IxCCpivzyMWFl0sGrH866mFKfeNAV1J8c6O4TOoWgjnKEHdyH9owglW4162gbZ3zj6ixPO3ZduVnB3i5M%2BE5H%2B0s9ytXyGgA98rXWBPzbJ%2BA4nBnGOeDejqzmUYtRrTONf5q4AlE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLQFNJ2Z4Y%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=b792ace8a9895f3a54fd5a5b45710da83814ca70e2fbde55f65b4b6bd1bb0ca9"
-                alt="die 1 image"
-            />
-            <img
-                id="die2"
-                src="https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367354?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=cuhbcD5TURDPNgO5fnndI9Vc9OMJswY%2BhUKbznSboA4%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die1.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkcwRQIhALDxCccrMurXgMq5n8x6WAl64JitMnH98srHYA4wWhAyAiAh0CMmavSXjkkjEEbZEh6mTBBxZZ94H98aPjUc3qxq8yrkBAj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDYzNTU2NzkyNDE4MyIM2Z4ZAhN7oBHmrf0YKrgE2pA%2BTk%2FrWf5p6HCAwBgV5xanWXAFS1Zhj9S%2FADpwJPN7hMzZkHRD6TR4wjpSq8fclsSXnyAG9kISzYTIV%2FHiFCPUAIPYjI41otGQRlCKH1ws1UXAhwLo9Zr%2FWvTwhk9LlkX2zjJdr%2Buo%2FFdbrXawBcgreapOrLNwud%2FjS%2BjAlBVRsV6Xi3g28lwPuMXu3Np%2BJCYli5dLdBMmwTgO6GMaCI%2F4gcN4yiOIxYdZsXr4aFTL9lbQF7trdg1Xrb2YY5XdvMxJl6L0pOzG9IepzYSbppg6Npuxz%2FkT1l7wig4qxaMuGC4fzO%2BCXMzxrPiXOs%2F5UgLpG4N%2Bov7v3xCyETSaW5HoOL5YqO2mPd%2FDdQv78Ql5ciVmhsdlh91jfseHX8nB0gIJ0qz9gd5O8Ff%2FaWUOkgd0tp1VmNnuJj1B8YAmFhRARHHlpobJ8Gq0Dyq5ady3MVbcDvCV07FiMu7kvaEnECI9%2BuFGwYwMqrUG5joLRTfvM%2BTBUeYJHAoWZ7Jjmh0JIwkI%2FhADitPFh8oqFk%2FiE89LSBl5QmKTB%2FBhJs88jafQTMXhhSWTtq64GlBmyiSIs1xC2qca50PGWPpqZd3G4LYCNmxzb75l%2BgRuLWWvD%2Bjyx21ZhHPOfuBDbIJ%2BYGLHaN6hg%2BtNzqRG8xhcCT%2BfIPBW8KA73WwS%2B4Hwh9xx26aUFYWGuiOnI0FVN8dZBtBeKpUBdIZ5sHIURqFO%2Bhjvn1NCwDP%2FnL8a2MmK%2FW5tpS67lC%2BO8CdtFzDQyNmdBjqpAbySr9352X4HHLQ9ZvjQLynD7tg8utAtGzfRKU99vsyRCaulprUb6ziL2RJAezozcLPIIsKvvVn9vNQYPspI2F0Sfj1IxCCpivzyMWFl0sGrH866mFKfeNAV1J8c6O4TOoWgjnKEHdyH9owglW4162gbZ3zj6ixPO3ZduVnB3i5M%2BE5H%2B0s9ytXyGgA98rXWBPzbJ%2BA4nBnGOeDejqzmUYtRrTONf5q4AlE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLQFNJ2Z4Y%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=b792ace8a9895f3a54fd5a5b45710da83814ca70e2fbde55f65b4b6bd1bb0ca9"
-                alt="die 2 image"
-            />
-            <img
-                id="die3"
-                src="https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367354?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=cuhbcD5TURDPNgO5fnndI9Vc9OMJswY%2BhUKbznSboA4%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die1.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkcwRQIhALDxCccrMurXgMq5n8x6WAl64JitMnH98srHYA4wWhAyAiAh0CMmavSXjkkjEEbZEh6mTBBxZZ94H98aPjUc3qxq8yrkBAj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDYzNTU2NzkyNDE4MyIM2Z4ZAhN7oBHmrf0YKrgE2pA%2BTk%2FrWf5p6HCAwBgV5xanWXAFS1Zhj9S%2FADpwJPN7hMzZkHRD6TR4wjpSq8fclsSXnyAG9kISzYTIV%2FHiFCPUAIPYjI41otGQRlCKH1ws1UXAhwLo9Zr%2FWvTwhk9LlkX2zjJdr%2Buo%2FFdbrXawBcgreapOrLNwud%2FjS%2BjAlBVRsV6Xi3g28lwPuMXu3Np%2BJCYli5dLdBMmwTgO6GMaCI%2F4gcN4yiOIxYdZsXr4aFTL9lbQF7trdg1Xrb2YY5XdvMxJl6L0pOzG9IepzYSbppg6Npuxz%2FkT1l7wig4qxaMuGC4fzO%2BCXMzxrPiXOs%2F5UgLpG4N%2Bov7v3xCyETSaW5HoOL5YqO2mPd%2FDdQv78Ql5ciVmhsdlh91jfseHX8nB0gIJ0qz9gd5O8Ff%2FaWUOkgd0tp1VmNnuJj1B8YAmFhRARHHlpobJ8Gq0Dyq5ady3MVbcDvCV07FiMu7kvaEnECI9%2BuFGwYwMqrUG5joLRTfvM%2BTBUeYJHAoWZ7Jjmh0JIwkI%2FhADitPFh8oqFk%2FiE89LSBl5QmKTB%2FBhJs88jafQTMXhhSWTtq64GlBmyiSIs1xC2qca50PGWPpqZd3G4LYCNmxzb75l%2BgRuLWWvD%2Bjyx21ZhHPOfuBDbIJ%2BYGLHaN6hg%2BtNzqRG8xhcCT%2BfIPBW8KA73WwS%2B4Hwh9xx26aUFYWGuiOnI0FVN8dZBtBeKpUBdIZ5sHIURqFO%2Bhjvn1NCwDP%2FnL8a2MmK%2FW5tpS67lC%2BO8CdtFzDQyNmdBjqpAbySr9352X4HHLQ9ZvjQLynD7tg8utAtGzfRKU99vsyRCaulprUb6ziL2RJAezozcLPIIsKvvVn9vNQYPspI2F0Sfj1IxCCpivzyMWFl0sGrH866mFKfeNAV1J8c6O4TOoWgjnKEHdyH9owglW4162gbZ3zj6ixPO3ZduVnB3i5M%2BE5H%2B0s9ytXyGgA98rXWBPzbJ%2BA4nBnGOeDejqzmUYtRrTONf5q4AlE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLQFNJ2Z4Y%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=b792ace8a9895f3a54fd5a5b45710da83814ca70e2fbde55f65b4b6bd1bb0ca9"
-                alt="die 3 image"
-            />
-            <img
-                id="die4"
-                src="https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367354?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=cuhbcD5TURDPNgO5fnndI9Vc9OMJswY%2BhUKbznSboA4%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die1.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkcwRQIhALDxCccrMurXgMq5n8x6WAl64JitMnH98srHYA4wWhAyAiAh0CMmavSXjkkjEEbZEh6mTBBxZZ94H98aPjUc3qxq8yrkBAj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDYzNTU2NzkyNDE4MyIM2Z4ZAhN7oBHmrf0YKrgE2pA%2BTk%2FrWf5p6HCAwBgV5xanWXAFS1Zhj9S%2FADpwJPN7hMzZkHRD6TR4wjpSq8fclsSXnyAG9kISzYTIV%2FHiFCPUAIPYjI41otGQRlCKH1ws1UXAhwLo9Zr%2FWvTwhk9LlkX2zjJdr%2Buo%2FFdbrXawBcgreapOrLNwud%2FjS%2BjAlBVRsV6Xi3g28lwPuMXu3Np%2BJCYli5dLdBMmwTgO6GMaCI%2F4gcN4yiOIxYdZsXr4aFTL9lbQF7trdg1Xrb2YY5XdvMxJl6L0pOzG9IepzYSbppg6Npuxz%2FkT1l7wig4qxaMuGC4fzO%2BCXMzxrPiXOs%2F5UgLpG4N%2Bov7v3xCyETSaW5HoOL5YqO2mPd%2FDdQv78Ql5ciVmhsdlh91jfseHX8nB0gIJ0qz9gd5O8Ff%2FaWUOkgd0tp1VmNnuJj1B8YAmFhRARHHlpobJ8Gq0Dyq5ady3MVbcDvCV07FiMu7kvaEnECI9%2BuFGwYwMqrUG5joLRTfvM%2BTBUeYJHAoWZ7Jjmh0JIwkI%2FhADitPFh8oqFk%2FiE89LSBl5QmKTB%2FBhJs88jafQTMXhhSWTtq64GlBmyiSIs1xC2qca50PGWPpqZd3G4LYCNmxzb75l%2BgRuLWWvD%2Bjyx21ZhHPOfuBDbIJ%2BYGLHaN6hg%2BtNzqRG8xhcCT%2BfIPBW8KA73WwS%2B4Hwh9xx26aUFYWGuiOnI0FVN8dZBtBeKpUBdIZ5sHIURqFO%2Bhjvn1NCwDP%2FnL8a2MmK%2FW5tpS67lC%2BO8CdtFzDQyNmdBjqpAbySr9352X4HHLQ9ZvjQLynD7tg8utAtGzfRKU99vsyRCaulprUb6ziL2RJAezozcLPIIsKvvVn9vNQYPspI2F0Sfj1IxCCpivzyMWFl0sGrH866mFKfeNAV1J8c6O4TOoWgjnKEHdyH9owglW4162gbZ3zj6ixPO3ZduVnB3i5M%2BE5H%2B0s9ytXyGgA98rXWBPzbJ%2BA4nBnGOeDejqzmUYtRrTONf5q4AlE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLQFNJ2Z4Y%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=b792ace8a9895f3a54fd5a5b45710da83814ca70e2fbde55f65b4b6bd1bb0ca9"
-                alt="die 4 image"
-            />
-            <img
-                id="die5"
-                src="https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367354?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=cuhbcD5TURDPNgO5fnndI9Vc9OMJswY%2BhUKbznSboA4%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die1.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkcwRQIhALDxCccrMurXgMq5n8x6WAl64JitMnH98srHYA4wWhAyAiAh0CMmavSXjkkjEEbZEh6mTBBxZZ94H98aPjUc3qxq8yrkBAj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDYzNTU2NzkyNDE4MyIM2Z4ZAhN7oBHmrf0YKrgE2pA%2BTk%2FrWf5p6HCAwBgV5xanWXAFS1Zhj9S%2FADpwJPN7hMzZkHRD6TR4wjpSq8fclsSXnyAG9kISzYTIV%2FHiFCPUAIPYjI41otGQRlCKH1ws1UXAhwLo9Zr%2FWvTwhk9LlkX2zjJdr%2Buo%2FFdbrXawBcgreapOrLNwud%2FjS%2BjAlBVRsV6Xi3g28lwPuMXu3Np%2BJCYli5dLdBMmwTgO6GMaCI%2F4gcN4yiOIxYdZsXr4aFTL9lbQF7trdg1Xrb2YY5XdvMxJl6L0pOzG9IepzYSbppg6Npuxz%2FkT1l7wig4qxaMuGC4fzO%2BCXMzxrPiXOs%2F5UgLpG4N%2Bov7v3xCyETSaW5HoOL5YqO2mPd%2FDdQv78Ql5ciVmhsdlh91jfseHX8nB0gIJ0qz9gd5O8Ff%2FaWUOkgd0tp1VmNnuJj1B8YAmFhRARHHlpobJ8Gq0Dyq5ady3MVbcDvCV07FiMu7kvaEnECI9%2BuFGwYwMqrUG5joLRTfvM%2BTBUeYJHAoWZ7Jjmh0JIwkI%2FhADitPFh8oqFk%2FiE89LSBl5QmKTB%2FBhJs88jafQTMXhhSWTtq64GlBmyiSIs1xC2qca50PGWPpqZd3G4LYCNmxzb75l%2BgRuLWWvD%2Bjyx21ZhHPOfuBDbIJ%2BYGLHaN6hg%2BtNzqRG8xhcCT%2BfIPBW8KA73WwS%2B4Hwh9xx26aUFYWGuiOnI0FVN8dZBtBeKpUBdIZ5sHIURqFO%2Bhjvn1NCwDP%2FnL8a2MmK%2FW5tpS67lC%2BO8CdtFzDQyNmdBjqpAbySr9352X4HHLQ9ZvjQLynD7tg8utAtGzfRKU99vsyRCaulprUb6ziL2RJAezozcLPIIsKvvVn9vNQYPspI2F0Sfj1IxCCpivzyMWFl0sGrH866mFKfeNAV1J8c6O4TOoWgjnKEHdyH9owglW4162gbZ3zj6ixPO3ZduVnB3i5M%2BE5H%2B0s9ytXyGgA98rXWBPzbJ%2BA4nBnGOeDejqzmUYtRrTONf5q4AlE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLQFNJ2Z4Y%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=b792ace8a9895f3a54fd5a5b45710da83814ca70e2fbde55f65b4b6bd1bb0ca9"
-                alt="die 5 image"
-            />
-            <img
-                id="die6"
-                src="https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367354?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=cuhbcD5TURDPNgO5fnndI9Vc9OMJswY%2BhUKbznSboA4%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die1.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkcwRQIhALDxCccrMurXgMq5n8x6WAl64JitMnH98srHYA4wWhAyAiAh0CMmavSXjkkjEEbZEh6mTBBxZZ94H98aPjUc3qxq8yrkBAj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDYzNTU2NzkyNDE4MyIM2Z4ZAhN7oBHmrf0YKrgE2pA%2BTk%2FrWf5p6HCAwBgV5xanWXAFS1Zhj9S%2FADpwJPN7hMzZkHRD6TR4wjpSq8fclsSXnyAG9kISzYTIV%2FHiFCPUAIPYjI41otGQRlCKH1ws1UXAhwLo9Zr%2FWvTwhk9LlkX2zjJdr%2Buo%2FFdbrXawBcgreapOrLNwud%2FjS%2BjAlBVRsV6Xi3g28lwPuMXu3Np%2BJCYli5dLdBMmwTgO6GMaCI%2F4gcN4yiOIxYdZsXr4aFTL9lbQF7trdg1Xrb2YY5XdvMxJl6L0pOzG9IepzYSbppg6Npuxz%2FkT1l7wig4qxaMuGC4fzO%2BCXMzxrPiXOs%2F5UgLpG4N%2Bov7v3xCyETSaW5HoOL5YqO2mPd%2FDdQv78Ql5ciVmhsdlh91jfseHX8nB0gIJ0qz9gd5O8Ff%2FaWUOkgd0tp1VmNnuJj1B8YAmFhRARHHlpobJ8Gq0Dyq5ady3MVbcDvCV07FiMu7kvaEnECI9%2BuFGwYwMqrUG5joLRTfvM%2BTBUeYJHAoWZ7Jjmh0JIwkI%2FhADitPFh8oqFk%2FiE89LSBl5QmKTB%2FBhJs88jafQTMXhhSWTtq64GlBmyiSIs1xC2qca50PGWPpqZd3G4LYCNmxzb75l%2BgRuLWWvD%2Bjyx21ZhHPOfuBDbIJ%2BYGLHaN6hg%2BtNzqRG8xhcCT%2BfIPBW8KA73WwS%2B4Hwh9xx26aUFYWGuiOnI0FVN8dZBtBeKpUBdIZ5sHIURqFO%2Bhjvn1NCwDP%2FnL8a2MmK%2FW5tpS67lC%2BO8CdtFzDQyNmdBjqpAbySr9352X4HHLQ9ZvjQLynD7tg8utAtGzfRKU99vsyRCaulprUb6ziL2RJAezozcLPIIsKvvVn9vNQYPspI2F0Sfj1IxCCpivzyMWFl0sGrH866mFKfeNAV1J8c6O4TOoWgjnKEHdyH9owglW4162gbZ3zj6ixPO3ZduVnB3i5M%2BE5H%2B0s9ytXyGgA98rXWBPzbJ%2BA4nBnGOeDejqzmUYtRrTONf5q4AlE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLQFNJ2Z4Y%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=b792ace8a9895f3a54fd5a5b45710da83814ca70e2fbde55f65b4b6bd1bb0ca9"
-                alt="die 6 image"
-            />
-        </p>
-        <p>
-            <img
-                id="die7"
-                src="https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367354?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=cuhbcD5TURDPNgO5fnndI9Vc9OMJswY%2BhUKbznSboA4%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die1.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkcwRQIhALDxCccrMurXgMq5n8x6WAl64JitMnH98srHYA4wWhAyAiAh0CMmavSXjkkjEEbZEh6mTBBxZZ94H98aPjUc3qxq8yrkBAj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDYzNTU2NzkyNDE4MyIM2Z4ZAhN7oBHmrf0YKrgE2pA%2BTk%2FrWf5p6HCAwBgV5xanWXAFS1Zhj9S%2FADpwJPN7hMzZkHRD6TR4wjpSq8fclsSXnyAG9kISzYTIV%2FHiFCPUAIPYjI41otGQRlCKH1ws1UXAhwLo9Zr%2FWvTwhk9LlkX2zjJdr%2Buo%2FFdbrXawBcgreapOrLNwud%2FjS%2BjAlBVRsV6Xi3g28lwPuMXu3Np%2BJCYli5dLdBMmwTgO6GMaCI%2F4gcN4yiOIxYdZsXr4aFTL9lbQF7trdg1Xrb2YY5XdvMxJl6L0pOzG9IepzYSbppg6Npuxz%2FkT1l7wig4qxaMuGC4fzO%2BCXMzxrPiXOs%2F5UgLpG4N%2Bov7v3xCyETSaW5HoOL5YqO2mPd%2FDdQv78Ql5ciVmhsdlh91jfseHX8nB0gIJ0qz9gd5O8Ff%2FaWUOkgd0tp1VmNnuJj1B8YAmFhRARHHlpobJ8Gq0Dyq5ady3MVbcDvCV07FiMu7kvaEnECI9%2BuFGwYwMqrUG5joLRTfvM%2BTBUeYJHAoWZ7Jjmh0JIwkI%2FhADitPFh8oqFk%2FiE89LSBl5QmKTB%2FBhJs88jafQTMXhhSWTtq64GlBmyiSIs1xC2qca50PGWPpqZd3G4LYCNmxzb75l%2BgRuLWWvD%2Bjyx21ZhHPOfuBDbIJ%2BYGLHaN6hg%2BtNzqRG8xhcCT%2BfIPBW8KA73WwS%2B4Hwh9xx26aUFYWGuiOnI0FVN8dZBtBeKpUBdIZ5sHIURqFO%2Bhjvn1NCwDP%2FnL8a2MmK%2FW5tpS67lC%2BO8CdtFzDQyNmdBjqpAbySr9352X4HHLQ9ZvjQLynD7tg8utAtGzfRKU99vsyRCaulprUb6ziL2RJAezozcLPIIsKvvVn9vNQYPspI2F0Sfj1IxCCpivzyMWFl0sGrH866mFKfeNAV1J8c6O4TOoWgjnKEHdyH9owglW4162gbZ3zj6ixPO3ZduVnB3i5M%2BE5H%2B0s9ytXyGgA98rXWBPzbJ%2BA4nBnGOeDejqzmUYtRrTONf5q4AlE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLQFNJ2Z4Y%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=b792ace8a9895f3a54fd5a5b45710da83814ca70e2fbde55f65b4b6bd1bb0ca9"
-                alt="die 7 image"
-            />
-            <img
-                id="die8"
-                src="https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367354?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=cuhbcD5TURDPNgO5fnndI9Vc9OMJswY%2BhUKbznSboA4%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die1.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkcwRQIhALDxCccrMurXgMq5n8x6WAl64JitMnH98srHYA4wWhAyAiAh0CMmavSXjkkjEEbZEh6mTBBxZZ94H98aPjUc3qxq8yrkBAj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDYzNTU2NzkyNDE4MyIM2Z4ZAhN7oBHmrf0YKrgE2pA%2BTk%2FrWf5p6HCAwBgV5xanWXAFS1Zhj9S%2FADpwJPN7hMzZkHRD6TR4wjpSq8fclsSXnyAG9kISzYTIV%2FHiFCPUAIPYjI41otGQRlCKH1ws1UXAhwLo9Zr%2FWvTwhk9LlkX2zjJdr%2Buo%2FFdbrXawBcgreapOrLNwud%2FjS%2BjAlBVRsV6Xi3g28lwPuMXu3Np%2BJCYli5dLdBMmwTgO6GMaCI%2F4gcN4yiOIxYdZsXr4aFTL9lbQF7trdg1Xrb2YY5XdvMxJl6L0pOzG9IepzYSbppg6Npuxz%2FkT1l7wig4qxaMuGC4fzO%2BCXMzxrPiXOs%2F5UgLpG4N%2Bov7v3xCyETSaW5HoOL5YqO2mPd%2FDdQv78Ql5ciVmhsdlh91jfseHX8nB0gIJ0qz9gd5O8Ff%2FaWUOkgd0tp1VmNnuJj1B8YAmFhRARHHlpobJ8Gq0Dyq5ady3MVbcDvCV07FiMu7kvaEnECI9%2BuFGwYwMqrUG5joLRTfvM%2BTBUeYJHAoWZ7Jjmh0JIwkI%2FhADitPFh8oqFk%2FiE89LSBl5QmKTB%2FBhJs88jafQTMXhhSWTtq64GlBmyiSIs1xC2qca50PGWPpqZd3G4LYCNmxzb75l%2BgRuLWWvD%2Bjyx21ZhHPOfuBDbIJ%2BYGLHaN6hg%2BtNzqRG8xhcCT%2BfIPBW8KA73WwS%2B4Hwh9xx26aUFYWGuiOnI0FVN8dZBtBeKpUBdIZ5sHIURqFO%2Bhjvn1NCwDP%2FnL8a2MmK%2FW5tpS67lC%2BO8CdtFzDQyNmdBjqpAbySr9352X4HHLQ9ZvjQLynD7tg8utAtGzfRKU99vsyRCaulprUb6ziL2RJAezozcLPIIsKvvVn9vNQYPspI2F0Sfj1IxCCpivzyMWFl0sGrH866mFKfeNAV1J8c6O4TOoWgjnKEHdyH9owglW4162gbZ3zj6ixPO3ZduVnB3i5M%2BE5H%2B0s9ytXyGgA98rXWBPzbJ%2BA4nBnGOeDejqzmUYtRrTONf5q4AlE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLQFNJ2Z4Y%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=b792ace8a9895f3a54fd5a5b45710da83814ca70e2fbde55f65b4b6bd1bb0ca9"
-                alt="die 8 image"
-            />
-            <img
-                id="die9"
-                src="https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367354?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=cuhbcD5TURDPNgO5fnndI9Vc9OMJswY%2BhUKbznSboA4%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die1.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkcwRQIhALDxCccrMurXgMq5n8x6WAl64JitMnH98srHYA4wWhAyAiAh0CMmavSXjkkjEEbZEh6mTBBxZZ94H98aPjUc3qxq8yrkBAj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDYzNTU2NzkyNDE4MyIM2Z4ZAhN7oBHmrf0YKrgE2pA%2BTk%2FrWf5p6HCAwBgV5xanWXAFS1Zhj9S%2FADpwJPN7hMzZkHRD6TR4wjpSq8fclsSXnyAG9kISzYTIV%2FHiFCPUAIPYjI41otGQRlCKH1ws1UXAhwLo9Zr%2FWvTwhk9LlkX2zjJdr%2Buo%2FFdbrXawBcgreapOrLNwud%2FjS%2BjAlBVRsV6Xi3g28lwPuMXu3Np%2BJCYli5dLdBMmwTgO6GMaCI%2F4gcN4yiOIxYdZsXr4aFTL9lbQF7trdg1Xrb2YY5XdvMxJl6L0pOzG9IepzYSbppg6Npuxz%2FkT1l7wig4qxaMuGC4fzO%2BCXMzxrPiXOs%2F5UgLpG4N%2Bov7v3xCyETSaW5HoOL5YqO2mPd%2FDdQv78Ql5ciVmhsdlh91jfseHX8nB0gIJ0qz9gd5O8Ff%2FaWUOkgd0tp1VmNnuJj1B8YAmFhRARHHlpobJ8Gq0Dyq5ady3MVbcDvCV07FiMu7kvaEnECI9%2BuFGwYwMqrUG5joLRTfvM%2BTBUeYJHAoWZ7Jjmh0JIwkI%2FhADitPFh8oqFk%2FiE89LSBl5QmKTB%2FBhJs88jafQTMXhhSWTtq64GlBmyiSIs1xC2qca50PGWPpqZd3G4LYCNmxzb75l%2BgRuLWWvD%2Bjyx21ZhHPOfuBDbIJ%2BYGLHaN6hg%2BtNzqRG8xhcCT%2BfIPBW8KA73WwS%2B4Hwh9xx26aUFYWGuiOnI0FVN8dZBtBeKpUBdIZ5sHIURqFO%2Bhjvn1NCwDP%2FnL8a2MmK%2FW5tpS67lC%2BO8CdtFzDQyNmdBjqpAbySr9352X4HHLQ9ZvjQLynD7tg8utAtGzfRKU99vsyRCaulprUb6ziL2RJAezozcLPIIsKvvVn9vNQYPspI2F0Sfj1IxCCpivzyMWFl0sGrH866mFKfeNAV1J8c6O4TOoWgjnKEHdyH9owglW4162gbZ3zj6ixPO3ZduVnB3i5M%2BE5H%2B0s9ytXyGgA98rXWBPzbJ%2BA4nBnGOeDejqzmUYtRrTONf5q4AlE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLQFNJ2Z4Y%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=b792ace8a9895f3a54fd5a5b45710da83814ca70e2fbde55f65b4b6bd1bb0ca9"
-                alt="die 9 image"
-            />
-            <img
-                id="die10"
-                src="https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367354?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=cuhbcD5TURDPNgO5fnndI9Vc9OMJswY%2BhUKbznSboA4%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die1.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkcwRQIhALDxCccrMurXgMq5n8x6WAl64JitMnH98srHYA4wWhAyAiAh0CMmavSXjkkjEEbZEh6mTBBxZZ94H98aPjUc3qxq8yrkBAj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDYzNTU2NzkyNDE4MyIM2Z4ZAhN7oBHmrf0YKrgE2pA%2BTk%2FrWf5p6HCAwBgV5xanWXAFS1Zhj9S%2FADpwJPN7hMzZkHRD6TR4wjpSq8fclsSXnyAG9kISzYTIV%2FHiFCPUAIPYjI41otGQRlCKH1ws1UXAhwLo9Zr%2FWvTwhk9LlkX2zjJdr%2Buo%2FFdbrXawBcgreapOrLNwud%2FjS%2BjAlBVRsV6Xi3g28lwPuMXu3Np%2BJCYli5dLdBMmwTgO6GMaCI%2F4gcN4yiOIxYdZsXr4aFTL9lbQF7trdg1Xrb2YY5XdvMxJl6L0pOzG9IepzYSbppg6Npuxz%2FkT1l7wig4qxaMuGC4fzO%2BCXMzxrPiXOs%2F5UgLpG4N%2Bov7v3xCyETSaW5HoOL5YqO2mPd%2FDdQv78Ql5ciVmhsdlh91jfseHX8nB0gIJ0qz9gd5O8Ff%2FaWUOkgd0tp1VmNnuJj1B8YAmFhRARHHlpobJ8Gq0Dyq5ady3MVbcDvCV07FiMu7kvaEnECI9%2BuFGwYwMqrUG5joLRTfvM%2BTBUeYJHAoWZ7Jjmh0JIwkI%2FhADitPFh8oqFk%2FiE89LSBl5QmKTB%2FBhJs88jafQTMXhhSWTtq64GlBmyiSIs1xC2qca50PGWPpqZd3G4LYCNmxzb75l%2BgRuLWWvD%2Bjyx21ZhHPOfuBDbIJ%2BYGLHaN6hg%2BtNzqRG8xhcCT%2BfIPBW8KA73WwS%2B4Hwh9xx26aUFYWGuiOnI0FVN8dZBtBeKpUBdIZ5sHIURqFO%2Bhjvn1NCwDP%2FnL8a2MmK%2FW5tpS67lC%2BO8CdtFzDQyNmdBjqpAbySr9352X4HHLQ9ZvjQLynD7tg8utAtGzfRKU99vsyRCaulprUb6ziL2RJAezozcLPIIsKvvVn9vNQYPspI2F0Sfj1IxCCpivzyMWFl0sGrH866mFKfeNAV1J8c6O4TOoWgjnKEHdyH9owglW4162gbZ3zj6ixPO3ZduVnB3i5M%2BE5H%2B0s9ytXyGgA98rXWBPzbJ%2BA4nBnGOeDejqzmUYtRrTONf5q4AlE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLQFNJ2Z4Y%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=b792ace8a9895f3a54fd5a5b45710da83814ca70e2fbde55f65b4b6bd1bb0ca9"
-                alt="die 10 image"
-            />
-            <img
-                id="die11"
-                src="https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367354?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=cuhbcD5TURDPNgO5fnndI9Vc9OMJswY%2BhUKbznSboA4%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die1.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkcwRQIhALDxCccrMurXgMq5n8x6WAl64JitMnH98srHYA4wWhAyAiAh0CMmavSXjkkjEEbZEh6mTBBxZZ94H98aPjUc3qxq8yrkBAj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDYzNTU2NzkyNDE4MyIM2Z4ZAhN7oBHmrf0YKrgE2pA%2BTk%2FrWf5p6HCAwBgV5xanWXAFS1Zhj9S%2FADpwJPN7hMzZkHRD6TR4wjpSq8fclsSXnyAG9kISzYTIV%2FHiFCPUAIPYjI41otGQRlCKH1ws1UXAhwLo9Zr%2FWvTwhk9LlkX2zjJdr%2Buo%2FFdbrXawBcgreapOrLNwud%2FjS%2BjAlBVRsV6Xi3g28lwPuMXu3Np%2BJCYli5dLdBMmwTgO6GMaCI%2F4gcN4yiOIxYdZsXr4aFTL9lbQF7trdg1Xrb2YY5XdvMxJl6L0pOzG9IepzYSbppg6Npuxz%2FkT1l7wig4qxaMuGC4fzO%2BCXMzxrPiXOs%2F5UgLpG4N%2Bov7v3xCyETSaW5HoOL5YqO2mPd%2FDdQv78Ql5ciVmhsdlh91jfseHX8nB0gIJ0qz9gd5O8Ff%2FaWUOkgd0tp1VmNnuJj1B8YAmFhRARHHlpobJ8Gq0Dyq5ady3MVbcDvCV07FiMu7kvaEnECI9%2BuFGwYwMqrUG5joLRTfvM%2BTBUeYJHAoWZ7Jjmh0JIwkI%2FhADitPFh8oqFk%2FiE89LSBl5QmKTB%2FBhJs88jafQTMXhhSWTtq64GlBmyiSIs1xC2qca50PGWPpqZd3G4LYCNmxzb75l%2BgRuLWWvD%2Bjyx21ZhHPOfuBDbIJ%2BYGLHaN6hg%2BtNzqRG8xhcCT%2BfIPBW8KA73WwS%2B4Hwh9xx26aUFYWGuiOnI0FVN8dZBtBeKpUBdIZ5sHIURqFO%2Bhjvn1NCwDP%2FnL8a2MmK%2FW5tpS67lC%2BO8CdtFzDQyNmdBjqpAbySr9352X4HHLQ9ZvjQLynD7tg8utAtGzfRKU99vsyRCaulprUb6ziL2RJAezozcLPIIsKvvVn9vNQYPspI2F0Sfj1IxCCpivzyMWFl0sGrH866mFKfeNAV1J8c6O4TOoWgjnKEHdyH9owglW4162gbZ3zj6ixPO3ZduVnB3i5M%2BE5H%2B0s9ytXyGgA98rXWBPzbJ%2BA4nBnGOeDejqzmUYtRrTONf5q4AlE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLQFNJ2Z4Y%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=b792ace8a9895f3a54fd5a5b45710da83814ca70e2fbde55f65b4b6bd1bb0ca9"
-                alt="die 11 image"
-            />
-            <img
-                id="die12"
-                src="https://learn-ap-southeast-1-prod-fleet02-xythos.content.blackboardcdn.com/5cde00b02d001/23367354?X-Blackboard-Expiration=1672920000000&X-Blackboard-Signature=cuhbcD5TURDPNgO5fnndI9Vc9OMJswY%2BhUKbznSboA4%3D&X-Blackboard-Client-Id=528623&response-cache-control=private%2C%20max-age%3D21600&response-content-disposition=inline%3B%20filename%2A%3DUTF-8%27%27die1.png&response-content-type=image%2Fpng&X-Amz-Security-Token=IQoJb3JpZ2luX2VjELb%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaDmFwLXNvdXRoZWFzdC0xIkcwRQIhALDxCccrMurXgMq5n8x6WAl64JitMnH98srHYA4wWhAyAiAh0CMmavSXjkkjEEbZEh6mTBBxZZ94H98aPjUc3qxq8yrkBAj%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAIaDDYzNTU2NzkyNDE4MyIM2Z4ZAhN7oBHmrf0YKrgE2pA%2BTk%2FrWf5p6HCAwBgV5xanWXAFS1Zhj9S%2FADpwJPN7hMzZkHRD6TR4wjpSq8fclsSXnyAG9kISzYTIV%2FHiFCPUAIPYjI41otGQRlCKH1ws1UXAhwLo9Zr%2FWvTwhk9LlkX2zjJdr%2Buo%2FFdbrXawBcgreapOrLNwud%2FjS%2BjAlBVRsV6Xi3g28lwPuMXu3Np%2BJCYli5dLdBMmwTgO6GMaCI%2F4gcN4yiOIxYdZsXr4aFTL9lbQF7trdg1Xrb2YY5XdvMxJl6L0pOzG9IepzYSbppg6Npuxz%2FkT1l7wig4qxaMuGC4fzO%2BCXMzxrPiXOs%2F5UgLpG4N%2Bov7v3xCyETSaW5HoOL5YqO2mPd%2FDdQv78Ql5ciVmhsdlh91jfseHX8nB0gIJ0qz9gd5O8Ff%2FaWUOkgd0tp1VmNnuJj1B8YAmFhRARHHlpobJ8Gq0Dyq5ady3MVbcDvCV07FiMu7kvaEnECI9%2BuFGwYwMqrUG5joLRTfvM%2BTBUeYJHAoWZ7Jjmh0JIwkI%2FhADitPFh8oqFk%2FiE89LSBl5QmKTB%2FBhJs88jafQTMXhhSWTtq64GlBmyiSIs1xC2qca50PGWPpqZd3G4LYCNmxzb75l%2BgRuLWWvD%2Bjyx21ZhHPOfuBDbIJ%2BYGLHaN6hg%2BtNzqRG8xhcCT%2BfIPBW8KA73WwS%2B4Hwh9xx26aUFYWGuiOnI0FVN8dZBtBeKpUBdIZ5sHIURqFO%2Bhjvn1NCwDP%2FnL8a2MmK%2FW5tpS67lC%2BO8CdtFzDQyNmdBjqpAbySr9352X4HHLQ9ZvjQLynD7tg8utAtGzfRKU99vsyRCaulprUb6ziL2RJAezozcLPIIsKvvVn9vNQYPspI2F0Sfj1IxCCpivzyMWFl0sGrH866mFKfeNAV1J8c6O4TOoWgjnKEHdyH9owglW4162gbZ3zj6ixPO3ZduVnB3i5M%2BE5H%2B0s9ytXyGgA98rXWBPzbJ%2BA4nBnGOeDejqzmUYtRrTONf5q4AlE%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20230105T060000Z&X-Amz-SignedHeaders=host&X-Amz-Expires=21600&X-Amz-Credential=ASIAZH6WM4PLQFNJ2Z4Y%2F20230105%2Fap-southeast-1%2Fs3%2Faws4_request&X-Amz-Signature=b792ace8a9895f3a54fd5a5b45710da83814ca70e2fbde55f65b4b6bd1bb0ca9"
-                alt="die 12 image"
-            />
-        </p>
+    <body>
         <center>
-            <form action="#">
-                <input id="rollButton" type="button" value="Roll Dice" />
-            </form>
-            <div id="frequencyTableDiv"></div>
+            <h1 style="font-size: 75px; color: #dfd4ba">
+                Die Rolling Simulator
+            </h1>
+            <table
+                style="
+                    border: 0px solid;
+                    margin: 0;
+                    position: absolute;
+                    top: 47%;
+                    left: 50%;
+                    -ms-transform: translate(-50%, -50%);
+                    transform: translate(-50%, -50%);
+                "
+            >
+                <tr>
+                    <td style="padding-right: 40px; border: 0px solid">
+                        <p>
+                            <img id="die1" src="die1.png" alt="die 1 image" />
+                            <img id="die2" src="die1.png" alt="die 2 image" />
+                            <img id="die3" src="die1.png" alt="die 3 image" />
+                            <img id="die4" src="die1.png" alt="die 4 image" />
+                        </p>
+                        <p>
+                            <img id="die5" src="die1.png" alt="die 5 image" />
+                            <img id="die6" src="die1.png" alt="die 6 image" />
+                            <img id="die7" src="die1.png" alt="die 7 image" />
+                            <img id="die8" src="die1.png" alt="die 8 image" />
+                        </p>
+                        <p>
+                            <img id="die9" src="die1.png" alt="die 9 image" />
+                            <img id="die10" src="die1.png" alt="die 10 image" />
+                            <img id="die11" src="die1.png" alt="die 11 image" />
+                            <img id="die12" src="die1.png" alt="die 12 image" />
+                        </p>
+                        <form action="#">
+                            <center>
+                                <input
+                                    class="button"
+                                    id="rollButton"
+                                    type="button"
+                                    value="Roll Dice"
+                                />
+                            </center>
+                        </form>
+                    </td>
+                    <td style="padding-left: 40px; border: 0px solid">
+                        <center>
+                            <div id="frequencyTableDiv">
+                                <table>
+                                    <thead>
+                                        <th>Face</th>
+                                        <th>Frequency</th>
+                                        <th style="padding-right: 20px">
+                                            Percent
+                                        </th>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>0</td>
+                                            <td>0%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>0</td>
+                                            <td>0%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>3</td>
+                                            <td>0</td>
+                                            <td>0%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>4</td>
+                                            <td>0</td>
+                                            <td>0%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>5</td>
+                                            <td>0</td>
+                                            <td>0%</td>
+                                        </tr>
+                                        <tr>
+                                            <td>6</td>
+                                            <td>0</td>
+                                            <td>0%</td>
+                                        </tr>
+                                        <tr>
+                                            <th
+                                                style="
+                                                    padding-right: 10px;
+                                                    border-top: 5px solid black;
+                                                "
+                                            >
+                                                Highest
+                                            </th>
+                                            <td
+                                                style="
+                                                    border-top: 5px solid black;
+                                                "
+                                            >
+                                                0
+                                            </td>
+                                            <td
+                                                style="
+                                                    text-align: right;
+                                                    border-top: 5px solid black;
+                                                "
+                                            >
+                                                0%
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th>Lowest</th>
+                                            <td>0</td>
+                                            <td style="text-align: right">
+                                                0%
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th
+                                                style="
+                                                    padding-right: 10px;
+                                                    border-bottom: 5px solid
+                                                        black;
+                                                "
+                                            >
+                                                Total Rolls
+                                            </th>
+                                            <td
+                                                style="
+                                                    border-bottom: 5px solid
+                                                        black;
+                                                "
+                                                colspan="2"
+                                            >
+                                                0
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th
+                                                style="text-align: center"
+                                                colspan="3"
+                                            >
+                                                Repeating Frequency
+                                            </th>
+                                        </tr>
+                                        <tr>
+                                            <th>Faces</th>
+                                            <th>Frequency</th>
+                                            <th>Percent</th>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                ';
+                            </div>
+                        </center>
+                    </td>
+                </tr>
+            </table>
         </center>
     </body>
 </html>
