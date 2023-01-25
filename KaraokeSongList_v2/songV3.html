@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Karaoke Song List</title>
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+        />
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Covered+By+Your+Grace&family=Permanent+Marker&display=swap');
+            body {
+                background-image: url('bg.png');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100%;
+            }
+            button {
+                --b: 3px; /* border thickness */
+                --s: 0.45em; /* size of the corner */
+                --color: #373b44;
+
+                padding: calc(0.5em + var(--s)) calc(0.9em + var(--s));
+                color: var(--color);
+                --_p: var(--s);
+                background: conic-gradient(
+                        from 90deg at var(--b) var(--b),
+                        #0000 90deg,
+                        var(--color) 0
+                    )
+                    var(--_p) var(--_p) / calc(100% - var(--b) - 2 * var(--_p))
+                    calc(100% - var(--b) - 2 * var(--_p));
+                transition: 0.3s linear, color 0s, background-color 0s;
+                outline: var(--b) solid #0000;
+                outline-offset: 0.6em;
+                font-size: 16px;
+
+                border: 0;
+
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+            }
+            button:hover,
+            button:focus-visible {
+                --_p: 0px;
+                outline-color: var(--color);
+                outline-offset: 0.05em;
+                cursor: pointer;
+            }
+            button:active {
+                background: var(--color);
+                color: #fff;
+            }
+            table,
+            th {
+                border: 0px solid black;
+                border-collapse: collapse;
+                width: 100%;
+                text-align: center;
+                vertical-align: top;
+            }
+            input[type='text'] {
+                font-family: 'Covered By Your Grace', cursive;
+            }
+            table {
+                margin: 0;
+                table-layout: fixed;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="app">
+                <table>
+                    <tr>
+                        <th>
+                            <ul style="list-style-type: none"></ul>
+                        </th>
+                        <th>
+                            <form>
+                                <h1
+                                    style="
+                                        font-family: 'Permanent Marker', cursive;
+                                    "
+                                >
+                                    Karaoke Song List
+                                </h1>
+                                <input
+                                    type="text"
+                                    placeholder="Add new song..."
+                                />
+                                <button type="submit" style="margin: 5px">
+                                    &plus;
+                                </button>
+                                <script src="scriptv5.js"></script>
+                            </form>
+                        </th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
