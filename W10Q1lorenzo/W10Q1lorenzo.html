@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Word Guesser</title>
+        <style>
+            body {
+                position: absolute;
+                background-image: url('bg.png');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+            }
+
+            #imgs img {
+                width: 130px;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <div id="imgs" style="margin-bottom: 5%"></div>
+            <form><button type="submit">Shuffle</button></form>
+        </center>
+        <script type="text/javascript">
+            let imgDiv = document.getElementById('imgs');
+            let images = [1, 2, 3, 4, 5, 6];
+
+            document.querySelector('form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                shuffle();
+            });
+
+            function shuffle() {
+                imgDiv.innerHTML = '';
+                images.sort(() => Math.random() - 0.5);
+
+                images.forEach((x) => {
+                    imgDiv.innerHTML += `<img src="${x}.png"/>`;
+                });
+            }
+
+            window.addEventListener('load', shuffle, false);
+        </script>
+    </body>
+</html>
