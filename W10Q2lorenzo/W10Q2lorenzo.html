@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Word Guesser</title>
+        <style>
+            body {
+                position: absolute;
+                background-image: url('bg.png');
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                background-size: 100% 100%;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: #3b3d50;
+                font-family: sans-serif;
+            }
+
+            #imgs img {
+                width: 130px;
+            }
+
+            #ans-container {
+                border: 10px solid black;
+                border-radius: 30px;
+                margin: 3%;
+            }
+
+            table,
+            th,
+            td {
+                border-collapse: collapse;
+            }
+
+            table {
+                width: 100%;
+                height: 250px;
+            }
+
+            td {
+                border-right: 5px solid black;
+                vertical-align: top;
+                padding-left: 10px;
+            }
+
+            td:nth-child(3) {
+                border: 0px;
+                padding-left: 10px;
+            }
+
+            th {
+                height: 25px;
+                border-right: 5px solid black;
+                border-bottom: 5px solid black;
+            }
+
+            th:nth-child(3) {
+                border: 0px;
+                border-bottom: 5px solid black;
+            }
+
+            button {
+                background: #e0795d;
+                border: 1px solid #e0795d;
+                border-radius: 6px;
+                box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+                box-sizing: border-box;
+                color: #f5f2df;
+                cursor: pointer;
+                display: inline-block;
+                font-family: nunito, roboto, proxima-nova, 'proxima nova',
+                    sans-serif;
+                font-size: 16px;
+                font-weight: 800;
+                line-height: 16px;
+                min-height: 40px;
+                outline: 0;
+                padding: 12px 14px;
+                text-align: center;
+                text-rendering: geometricprecision;
+                text-transform: none;
+                user-select: none;
+                -webkit-user-select: none;
+                touch-action: manipulation;
+                vertical-align: middle;
+            }
+
+            button:active {
+                background-color: initial;
+                background-position: 0 0;
+                color: #e0795d;
+            }
+
+            button:active {
+                opacity: 0.5;
+            }
+
+            input[type='text'] {
+                background: transparent;
+                border-radius: 30px;
+                padding: 10px;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <div id="imgs" style="margin-bottom: 5%"></div>
+            <form>
+                <input type="text" />
+                <br />
+                <br />
+                <button id="enter" type="submit">Enter</button>
+                <button id="clear" type="button">Clear</button>
+                <button id="shuffle" type="button">Shuffle</button>
+            </form>
+            <div id="ans-container">
+                <table>
+                    <tr>
+                        <th><b>Two Letter Words:</b></th>
+                        <th><b>Three Letter Words:</b></th>
+                        <th><b>Four Letter Words:</b></th>
+                    </tr>
+                    <tr>
+                        <td id="twos"></td>
+                        <td id="threes"></td>
+                        <td id="fours"></td>
+                    </tr>
+                </table>
+            </div>
+        </center>
+        <script type="text/javascript">
+            let imgDiv = document.getElementById('imgs');
+            let images = [1, 2, 3, 4, 5, 6];
+            let field = document.querySelector('input[type=text]');
+            let button1 = document.getElementById('shuffle');
+            let button2 = document.getElementById('clear');
+            let done = [];
+            let twoAns = ['us'];
+            let threeAns = ['usc', 'cue', 'see', 'sex', 'sue', 'use'];
+            let fourAns = ['cues'];
+
+            document.querySelector('form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                addWord();
+            });
+
+            button1.onclick = function () {
+                shuffle();
+            };
+
+            button2.onclick = function () {
+                clear();
+            };
+
+            function addWord() {
+                twos = document.getElementById('twos');
+                threes = document.getElementById('threes');
+                fours = document.getElementById('fours');
+                let ans = field.value.toLowerCase();
+
+                if (field.value == '') {
+                    window.alert('Please enter a word!');
+                    return false;
+                }
+
+                if (done.includes(ans)) {
+                    window.alert('Word already entered!');
+                    field.value = '';
+                    return false;
+                }
+
+                if (twoAns.includes(ans)) {
+                    done.push(field.value);
+                    twos.innerHTML += `<p>${ans}</p>`;
+                }
+
+                if (threeAns.includes(ans)) {
+                    done.push(field.value);
+                    threes.innerHTML += `<p>${ans}</p>`;
+                }
+
+                if (fourAns.includes(ans)) {
+                    done.push(ans);
+                    fours.innerHTML += `<p>${ans}</p>`;
+                }
+
+                field.value = '';
+            }
+
+            function shuffle() {
+                imgDiv.innerHTML = '';
+                images.sort(() => Math.random() - 0.5);
+
+                images.forEach((x) => {
+                    imgDiv.innerHTML += `<img src="${x}.png"/>`;
+                });
+            }
+
+            function clear() {
+                field.value = '';
+            }
+
+            window.addEventListener('load', shuffle, false);
+        </script>
+    </body>
+</html>
